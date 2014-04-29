@@ -1,0 +1,34 @@
+body {
+	background: url('../img/crossword.png');
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	color: #292f33;
+	font-size: 14px;
+}
+.nav {
+	height: 46px;
+	background: #FFF;
+	border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+.title {
+	margin: 0;
+	font-size: 22px;
+	line-height: 46px;
+	margin-left: 22px;
+}
+ul {
+	list-style: none;
+}
+li {
+	background: #FFF;
+	position: relative;
+	margin: 25px;
+	padding-left: 40px;
+	border: 1px solid #e1e8ed;
+}
+li img {
+	border-radius: 50px;
+	border: 2px solid #FFF;
+	position: absolute;
+	left: -30px;
+	top: 2px;
+}

@@ -1,4 +1,4 @@
-(function(global, $) {
+(function codeSmell(global, $) {
 	var $list = $('#tweets');
 	var promise = $.getJSON('api/index.php');
 
