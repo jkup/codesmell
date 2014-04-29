@@ -17,7 +17,7 @@
 
 	function addTweet(status) {
 		var img = '<img src="' + status.user.profile_image_url + '" />';
-		var author = '<h3>' + status.user.screen_name + '</h3>';
+		var author = '<h3><a href="https://twitter.com/' + status.user.screen_name + '">@' + status.user.screen_name + '</a></h3>';
 		$item = $('<li hidden>' +
 			img +
 			author +
