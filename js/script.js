@@ -3,6 +3,7 @@
 	var promise = $.getJSON('api/index.php');
 
 	promise.done(function(data) {
+		console.log(data);
 		var delay = 1000;
 		for(var i = 0; i < data.statuses.length; i++) {
 			console.log(data.statuses[i]);
@@ -23,6 +24,7 @@
 			author +
 			status.text +
 		'</li>');
+		$item.linkify();
 		$list.prepend($item);
 		$item.fadeIn( "slow" );
 	}

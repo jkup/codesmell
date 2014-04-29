@@ -18,6 +18,9 @@ body {
 a {
 	color: #009999;
 }
+a:hover {
+	color: #009999;
+}
 ul {
 	list-style: none;
 }
