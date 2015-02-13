@@ -1,6 +1,6 @@
 (function codeSmell(global, $) {
 	var $list = $('#tweets');
-	var promise = $.getJSON('api/index.php');
+	var promise = $.getJSON('/api.json');
 
 	promise.done(function(data) {
 		console.log(data);
@@ -16,9 +16,14 @@
 		}
 	});
 
+	promise.fail(function( jqxhr, textStatus, error ) {
+    	var err = textStatus + ", " + error;
+    	console.log( "Request Failed: " + err );
+	});
+
 	function addTweet(status) {
-		var img = '<a href="https://twitter.com/' + status.user.screen_name + '"><img src="' + status.user.profile_image_url + '" /></a>';
-		var author = '<h3>@<a href="https://twitter.com/' + status.user.screen_name + '">' + status.user.screen_name + '</a></h3>';
+		var img = '<a href="https://twitter.com/' + status.user_name + '"><img src="' + status.user_image + '" /></a>';
+		var author = '<h3>@<a href="https://twitter.com/' + status.user_name + '">' + status.user_name + '</a></h3>';
 		$item = $('<li hidden>' +
 			img +
 			author +
