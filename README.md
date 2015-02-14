@@ -1,4 +1,4 @@
-codesmell
+Codesmell
 =========
 
 A stream of complaints about bad code that show up on Twitter.
