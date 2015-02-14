@@ -1,6 +1,6 @@
 require "sinatra"
 require "twitter"
-require "sinatra/json"
+require "json"
 
 set :server, 'webrick'
 
@@ -16,14 +16,11 @@ get '/' do
 end
 
 get '/api.json' do
-    statuses = Array.new
-    client.search("%22code%20smell%22", result_type: "recent").take(3).collect do |tweet|
-        status = {
+    client.search("%22code%20smell%22", result_type: "recent").take(10).collect { |tweet|
+        {
             :text => tweet.text,
             :user_name => tweet.user.screen_name,
             :user_image => tweet.user.profile_image_url
-        }.to_json
-        statuses.push(status)
-        puts statuses
-    end
+        }
+    }.to_json
 end
