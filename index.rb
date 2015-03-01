@@ -1,6 +1,7 @@
 require "sinatra"
 require "twitter"
 require "json"
+require "pry"
 
 set :server, 'webrick'
 
@@ -16,11 +17,17 @@ get '/' do
 end
 
 get '/api.json' do
-    client.search("%22code%20smell%22", result_type: "recent").take(10).collect { |tweet|
-        {
-            :text => tweet.text,
-            :user_name => tweet.user.screen_name,
-            :user_image => tweet.user.profile_image_url
-        }
-    }.to_json
+    id = params[:id]
+    content_type :json
+
+    client.search("%22code%20smell%22", result_type: "recent").take(1).collect do |tweet|
+        if tweet.id.to_s != id.to_s
+            {
+                :id => tweet.id.to_s,
+                :text => tweet.text,
+                :user_name => tweet.user.screen_name,
+                :user_image => tweet.user.profile_image_url
+            }.to_json
+        end
+    end
 end
