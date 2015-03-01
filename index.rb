@@ -1,7 +1,6 @@
+require "json"
 require "sinatra"
 require "twitter"
-require "json"
-require "pry"
 
 set :server, 'webrick'
 
@@ -13,7 +12,18 @@ client = Twitter::REST::Client.new do |config|
 end
 
 get '/' do
-    send_file 'public/index.html'
+    tweets = Array.new
+
+    client.search("%22code%20smell%22", result_type: "recent").take(10).collect do |tweet|
+        tweets.push({
+            :id => tweet.id.to_s,
+            :text => tweet.text,
+            :user_name => tweet.user.screen_name,
+            :user_image => tweet.user.profile_image_url
+        })
+    end
+
+    erb :index, :locals => {:tweets => tweets}
 end
 
 get '/api.json' do

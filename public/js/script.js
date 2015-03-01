@@ -1,6 +1,7 @@
 (function codeSmell(global, $) {
 	var $list = $('#tweets');
-	var cursor = {id: null};
+	var cursor_id = $list.find('li').first().find('.id').text();
+	var cursor = {id: cursor_id};
 
 	var intervalID = window.setInterval(function(){
 		$.ajax({
