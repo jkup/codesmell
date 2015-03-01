@@ -8,6 +8,9 @@
 			url: '/api.json',
 			data: cursor,
 			success: function(data) {
+				if (!data.id) {
+					return;
+				}
 				cursor.id = data.id;
 				addTweet(data);
 			}

@@ -28,6 +28,8 @@ get '/api.json' do
                 :user_name => tweet.user.screen_name,
                 :user_image => tweet.user.profile_image_url
             }.to_json
+        else
+            {}.to_json
         end
     end
 end
